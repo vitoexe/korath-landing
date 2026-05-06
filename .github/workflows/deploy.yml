@@ -20,5 +20,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /var/www/html/patelnia.ovh
+            cd /var/www/html/korath.ovh
             git pull origin master
