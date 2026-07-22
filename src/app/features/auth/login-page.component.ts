@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '@app/core/auth';
+import { AuthAccessDeniedError, AuthService } from '@app/core/auth';
 
 @Component({
   selector: 'app-login-page',
@@ -25,7 +25,13 @@ export class LoginPageComponent {
       await this.auth.signInWithGoogle();
       await this.router.navigateByUrl('/dashboard');
     } catch (e) {
-      this.error.set(e instanceof Error ? e.message : 'Logowanie nie powiodło się.');
+      if (e instanceof AuthAccessDeniedError) {
+        this.error.set(e.message);
+      } else if (e instanceof Error && /popup-closed-by-user|cancelled/i.test(e.message)) {
+        this.error.set(null);
+      } else {
+        this.error.set(e instanceof Error ? e.message : 'Logowanie nie powiodło się.');
+      }
     } finally {
       this.loading.set(false);
     }

@@ -10,4 +10,5 @@ export const environment: Environment = {
     authDomain: 'patelnia-landing.firebaseapp.com',
     messagingSenderId: '991157894309',
   },
+  allowedEmails: ['vito.exe@gmail.com'],
 };

@@ -10,4 +10,6 @@ export interface FirebaseConfig {
 export interface Environment {
   production: boolean;
   firebase: FirebaseConfig;
+  /** Only these Google accounts may stay signed in (lowercase emails). */
+  allowedEmails: readonly string[];
 }
