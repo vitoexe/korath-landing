@@ -31,12 +31,6 @@ Uses existing Firebase project `patelnia-landing`. In Firebase Console → Authe
 - `www.korath.ovh`
 - `patelnia.ovh`
 
-### Allowlist (invite-only login)
-
-Only emails listed in `allowedEmails` in `src/environments/environment.ts` and `environment.prod.ts` can stay signed in. Others are signed out and removed from Firebase Auth after Google popup.
-
-Add people by appending their Gmail address to that array (both env files), then rebuild/deploy.
-
 ## Deploy
 
 Push to `master` runs GitHub Actions: `npm ci` → `ng build` → SCP `dist/korath/browser/` to `/var/www/html/korath.ovh`.
