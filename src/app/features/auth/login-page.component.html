@@ -1,0 +1,31 @@
+<div
+  class="pln-login-root flex min-h-dvh flex-col items-center justify-center gap-8 px-4 py-16 pln-text-primary"
+>
+  <a
+    class="pln-login-back pln-heading-font text-sm uppercase tracking-widest underline-offset-4 hover:underline"
+    routerLink="/"
+    >← Strona główna</a
+  >
+
+  <div class="pln-login-card max-w-md rounded-lg border border-white/10 bg-black/20 p-8 text-center backdrop-blur-sm">
+    <h1 class="pln-login-title pln-heading-font mb-2 text-2xl font-bold">Zaloguj się</h1>
+    <p class="pln-login-subtitle pln-text-secondary mb-6 text-sm">Kontynuuj przez konto Google.</p>
+
+    @if (error()) {
+      <p class="pln-login-error mb-4 text-sm text-red-300">{{ error() }}</p>
+    }
+
+    <button
+      type="button"
+      class="pln-login-google-btn pln-heading-font w-full rounded border border-white/20 bg-white/10 px-4 py-3 text-sm font-semibold uppercase tracking-widest transition hover:bg-white/20 disabled:opacity-50"
+      (click)="signIn()"
+      [disabled]="isSubmitDisabled()"
+    >
+      @if (loading()) {
+        <span class="pln-login-google-btn-label">Łączenie…</span>
+      } @else {
+        <span class="pln-login-google-btn-label">Google</span>
+      }
+    </button>
+  </div>
+</div>

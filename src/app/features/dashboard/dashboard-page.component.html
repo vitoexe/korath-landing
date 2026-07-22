@@ -1,0 +1,28 @@
+<div
+  class="pln-dashboard-root flex min-h-dvh flex-col items-center justify-center gap-8 px-4 py-16 pln-text-primary"
+>
+  <header class="pln-dashboard-header text-center">
+    <p class="pln-dashboard-kicker pln-text-secondary mb-2 text-xs uppercase tracking-[0.3em]">Panel</p>
+    <h1 class="pln-dashboard-title pln-heading-font text-3xl font-bold">
+      Witaj{{ currentUser()?.displayName ? ', ' + currentUser()?.displayName : '' }}.
+    </h1>
+    @if (currentUser()?.email) {
+      <p class="pln-dashboard-email mt-2 text-sm pln-text-secondary">{{ currentUser()?.email }}</p>
+    }
+  </header>
+
+  <nav class="pln-dashboard-actions flex flex-wrap items-center justify-center gap-4">
+    <a
+      class="pln-dashboard-home-link pln-heading-font text-sm uppercase tracking-widest underline-offset-4 hover:underline"
+      routerLink="/"
+      >Strona główna</a
+    >
+    <button
+      type="button"
+      class="pln-dashboard-signout-btn pln-heading-font rounded border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold uppercase tracking-widest hover:bg-white/20"
+      (click)="signOut()"
+    >
+      Wyloguj
+    </button>
+  </nav>
+</div>
